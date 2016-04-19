@@ -17,7 +17,7 @@ public class InfluxDBDataTest {
         data.setMetric("com.example.some-app.some-service.some-indicator");
         data.setValue(1);
         data.setTimestamp(new Date().getTime());
-        Assert.assertThat(data.toString(), JUnitMatchers.containsString("com.example.some-app.some-service.some-indicator "));
-        Assert.assertThat(data.toString(), JUnitMatchers.containsString("1i "));
+        Assert.assertThat(data.toString(), JUnitMatchers.containsString("com.example.some-app.some-service.some-indicator ".replace(".", "_")));
+        Assert.assertThat(data.toString(), JUnitMatchers.containsString("1i"));
     }
 }

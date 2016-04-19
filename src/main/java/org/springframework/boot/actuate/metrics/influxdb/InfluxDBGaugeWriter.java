@@ -147,6 +147,7 @@ public class InfluxDBGaugeWriter implements GaugeWriter {
         for (InfluxDBData data : snapshot) {
             stringBuilder.append(data.toString()).append("\n");
         }
+		stringBuilder.deleteCharAt(stringBuilder.lastIndexOf("\n"));
 		ResponseEntity<Map> response = this.restTemplate.postForEntity(this.url,
 				new HttpEntity<String>(stringBuilder.toString(), headers), Map.class);
 		if (!response.getStatusCode().is2xxSuccessful()) {

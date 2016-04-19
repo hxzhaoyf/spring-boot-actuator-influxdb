@@ -85,10 +85,15 @@ public class InfluxDBData {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name.toString());
+        stringBuilder.append(name.toString().replace(".", "_"));
         stringBuilder.append(" ");
-        stringBuilder.append("value=").append(value).append("i");
-        stringBuilder.append(" ").append(timestamp);
+		stringBuilder.append("value=").append(value);
+		if (value instanceof Double) {
+		}
+		if (value instanceof Integer || value instanceof Long || value instanceof Short) {
+			stringBuilder.append("i");
+		}
+		stringBuilder.append(" ").append(timestamp);
         return stringBuilder.toString();
     }
 }

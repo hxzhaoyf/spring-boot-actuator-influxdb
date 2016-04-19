@@ -66,7 +66,7 @@ public class InfluxDBName {
             stringBuilder.append(",");
         }
         for (Map.Entry<String, String> entry : getTags().entrySet()) {
-            stringBuilder.append(entry.getKey()).append("=").append(entry.getValue().replace(" ", "\\ "));
+            stringBuilder.append(entry.getKey()).append("=").append(entry.getValue().replace(" ", "\\ ")).append(",");
         }
         if (!getTags().isEmpty()) {
             stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
